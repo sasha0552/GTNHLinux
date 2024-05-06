@@ -1,0 +1,41 @@
+--- /dev/null
++++ b/0002-allow-offline-accounts.patch
+@@ -0,0 +1,18 @@
++--- a/launcher/ui/pages/global/AccountListPage.cpp
+++++ b/launcher/ui/pages/global/AccountListPage.cpp
++@@ -147,6 +147,7 @@ void AccountListPage::on_actionAddMicrosoft_triggered()
++ 
++ void AccountListPage::on_actionAddOffline_triggered()
++ {
+++#if 0
++     if (!m_accounts->anyAccountIsValid()) {
++         QMessageBox::warning(this, tr("Error"),
++                              tr("You must add a Microsoft account that owns Minecraft before you can add an offline account."
++@@ -154,6 +155,7 @@ void AccountListPage::on_actionAddOffline_triggered()
++                                 "If you have lost your account you can contact Microsoft for support."));
++         return;
++     }
+++#endif
++ 
++     MinecraftAccountPtr account =
++         OfflineLoginDialog::newAccount(this, tr("Please enter your desired username to add your offline account."));
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -21,12 +21,15 @@ optdepends=('glfw: to use system GLFW libraries'
+             'visualvm: Profiling support'
+             'xorg-xrandr: for older minecraft versions'
+             'java-runtime=8: for older minecraft versions')
+-source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz")
+-sha256sums=('4d587122f673ee4daea5aa098bd3da0f51989dbb600560146dd8a0375491cea0')
++source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz"
++        '0002-allow-offline-accounts.patch')
++sha256sums=('4d587122f673ee4daea5aa098bd3da0f51989dbb600560146dd8a0375491cea0'
++            'SKIP')
+ 
+ prepare() {
+   cd "PrismLauncher-${pkgver}"
+ 
++  patch -p1 < '../0002-allow-offline-accounts.patch'
+ }
+ 
+ build() {

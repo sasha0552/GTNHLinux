@@ -1,0 +1,3 @@
+[submodule "packages/prismlauncher"]
+  path = packages/prismlauncher
+  url = https://aur.archlinux.org/prismlauncher.git

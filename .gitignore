@@ -1,0 +1,7 @@
+airootfs/home/user/
+out/
+packages/*/pkg/
+packages/*/src/
+pacman.conf
+tmp/
+work/
