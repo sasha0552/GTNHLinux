@@ -1,0 +1,64 @@
+name: Build ISO
+
+on:
+  push:
+    branches:
+    - main
+
+  pull_request:
+    branches:
+    - main
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+
+      - name: Build image
+        uses: addnab/docker-run-action@v3
+        with:
+          image: archlinux:latest
+
+          options: --privileged --volume ${{ github.workspace }}:/workspace
+          run: |
+            # Exit on error
+            set -eu
+
+            # Enter project directory
+            pushd /workspace
+              # Install dependencies
+              .ci/dependencies.sh
+
+              # Build packages
+              su -c .ci/packages.sh user
+            popd
+
+            # Build image
+            mkarchiso -v -m iso -w /_work -o /workspace/out /workspace
+
+      - name: Create summary
+        run: |
+          # Exit on error
+          set -eu
+
+          # Start code section
+          echo '`' > "$GITHUB_STEP_SUMMARY"
+
+          # Print checksums
+          sha256sum out/* | sed 's/out\///' >> "$GITHUB_STEP_SUMMARY"
+
+          # End code section
+          echo '`' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: archiso-output
+          path: out/
