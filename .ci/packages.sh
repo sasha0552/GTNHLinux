@@ -31,6 +31,3 @@ done
 
 # create repository
 repo-add "$PKGDEST/custom.db.tar" "$PKGDEST"/*.pkg.tar.zst
-
-# generate pacman.conf
-sed -e "s|%CUSTOM_REPO_PATH%|$PKGDEST|" pacman.conf.tmpl > pacman.conf

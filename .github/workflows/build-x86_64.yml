@@ -1,4 +1,4 @@
-name: Build ISO
+name: Build ISO (x86_64)
 
 on:
   push:
@@ -34,7 +34,10 @@ jobs:
             # Enter project directory
             pushd /workspace
               # Install dependencies
-              .ci/dependencies.sh
+              ARCH=x86_64 .ci/dependencies.sh
+
+              # Render templates
+              .ci/configure.py x86_64
 
               # Build packages
               su -c .ci/packages.sh user

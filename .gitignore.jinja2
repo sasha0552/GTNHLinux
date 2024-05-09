@@ -7,6 +7,6 @@ venv/
 work/
 
 # rendered files
-efiboot/loader/entries/00-default.conf
-pacman.conf
-profiledef.sh
+{% for file in rendered %}
+{{ file }}
+{% endfor %}
