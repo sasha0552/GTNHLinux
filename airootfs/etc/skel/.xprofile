@@ -1,0 +1,4 @@
+# launch looking glass host
+if [ -f /usr/bin/looking-glass-host ]; then
+  looking-glass-host &
+fi

@@ -30,4 +30,4 @@ for pkgbuild in packages/*/PKGBUILD; do
 done
 
 # create repository
-repo-add "$PKGDEST/custom.db.tar" "$PKGDEST"/*.pkg.tar.zst
+repo-add "$PKGDEST/custom.db.tar" "$PKGDEST"/*.pkg.tar.*

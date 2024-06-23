@@ -1,0 +1,9 @@
+[Unit]
+Description=Setup Inter-VM shared memory device
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/ivshmem-setup
+
+[Install]
+WantedBy=multi-user.target

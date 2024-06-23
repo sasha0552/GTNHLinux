@@ -48,3 +48,8 @@ echo "user ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/user
 
 # Change owner/group of current directory to user
 chown -R user:user .
+
+# remove looking-glass on arm
+if [ "$ARCH" = "aarch64" ]; then
+  rm -fr packages/looking-glass
+fi

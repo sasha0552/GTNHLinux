@@ -1,3 +1,4 @@
 root:x:0:root
 wheel:x:10:user
+autologin:x:972:user
 user:x:1000:

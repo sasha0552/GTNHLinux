@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+for pci in /sys/bus/pci/devices/*; do
+  # RAM memory: Red Hat, Inc. Inter-VM shared memory (rev 01)
+  if [ "$(cat $pci/vendor)" = "0x1af4" ] && [ "$(cat $pci/device)" = "0x1110" ]; then
+    # give r/w access to everyone
+    chmod 666 $pci/resource2
+
+    # create symlink for looking glass
+    ln -s $pci/resource2 /dev/shm/looking-glass
+
+    # only one ivshmem supported for now
+    break
+  fi
+done
