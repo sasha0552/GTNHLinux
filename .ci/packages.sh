@@ -10,17 +10,10 @@ export PKGDEST="$PWD/tmp/pkg"
 mkdir -p "$SRCDEST"
 mkdir -p "$PKGDEST"
 
-# apply patches
-for patchdir in packages/patches/*; do
-  pkgname="$(basename $patchdir)"
-
-  for patch in "$patchdir"/*.patch; do
-    patchname=$(basename $patch)
-
-    echo "Applying patch $patchname for $pkgname..."
-    patch -d "packages/$pkgname" -Np1 < "$patch" || true
-  done
-done
+# check if there any packages
+if [ -z "$(ls -A packages/)" ]; then
+  exit 0
+fi
 
 # build packages
 for pkgbuild in packages/*/PKGBUILD; do

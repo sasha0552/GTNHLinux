@@ -2,9 +2,9 @@
 <openbox_menu>
   <menu id="root-menu" label="OpenBox 3">
     <menu id="games-menu" label="Games">
-      <item label="Prism Launcher">
+      <item label="Minecraft Launcher">
         <action name="Execute">
-          <execute>prismlauncher</execute>
+          <execute>/mnt/launcher.sh</execute>
         </action>
       </item>
     </menu>

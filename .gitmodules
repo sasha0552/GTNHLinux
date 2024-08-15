@@ -2,6 +2,3 @@
   path = packages/looking-glass
   url = https://aur.archlinux.org/looking-glass.git
 
-[submodule "packages/prismlauncher"]
-  path = packages/prismlauncher
-  url = https://aur.archlinux.org/prismlauncher.git

@@ -5,7 +5,7 @@ Description=Mount vda1 partition
 Options=nofail
 Type=ext4
 What=/dev/vda1
-Where=/home/user/.local/share/PrismLauncher
+Where=/mnt
 
 [Install]
 WantedBy=multi-user.target

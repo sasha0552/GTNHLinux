@@ -2,6 +2,10 @@ base
 btop
 grml-zsh-config
 htop
+jre11-openjdk
+jre17-openjdk
+jre21-openjdk
+jre8-openjdk
 konsole
 lightdm
 linux-aarch64
@@ -11,8 +15,10 @@ mkinitcpio-archiso
 nano
 openbox
 openssh
-prismlauncher
 pv
+qt5-base
+qt5-imageformats
+qt5-svg
 sudo
 ttf-dejavu
 ttf-liberation
