@@ -9,8 +9,8 @@ jre21-openjdk
 jre8-openjdk
 konsole
 lightdm
-linux
-linux-headers
+linux-lts
+linux-lts-headers
 looking-glass-host
 mesa-utils
 mkinitcpio
