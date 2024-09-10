@@ -14,9 +14,6 @@ mesa-utils
 mkinitcpio
 mkinitcpio-archiso
 nano
-nvidia
-nvidia-prime
-nvidia-utils
 nvtop
 openbox
 openssh
