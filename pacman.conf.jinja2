@@ -73,9 +73,11 @@ LocalFileSigLevel = Optional
 #[core-testing]
 #Include = /etc/pacman.d/mirrorlist
 
+{% if ARCH == "x86_64" %}
 [custom]
 SigLevel = Optional TrustAll
 Server = file://{{ CWD + "/tmp/pkg" }}
+{% endif %}
 
 [core]
 Include = /etc/pacman.d/mirrorlist
