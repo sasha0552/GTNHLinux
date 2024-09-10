@@ -1,5 +1,6 @@
 base
 btop
+dkms
 grml-zsh-config
 htop
 jre11-openjdk
@@ -9,6 +10,7 @@ jre8-openjdk
 konsole
 lightdm
 linux
+linux-headers
 looking-glass-host
 mesa-utils
 mkinitcpio
